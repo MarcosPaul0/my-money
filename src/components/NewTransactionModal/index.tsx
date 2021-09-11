@@ -20,7 +20,7 @@ export function NewTransactionModal({ isOpen, onRequestClose}: NewTransactionMod
     category, setCategory,
     type, setType,
     handleSubmitNewTransaction
-  } = useNewTransaction({ onRequestClose })
+  } = useNewTransaction(onRequestClose)
   
   return (
     <Modal 

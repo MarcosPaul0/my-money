@@ -1,12 +1,9 @@
 import { useState, FormEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid'
+import { notify } from './useToasty';
 import { useTransactions } from './useTransactions';
 
-interface NewTransactionInterface {
-  onRequestClose: () => void
-}
-
-export function useNewTransaction({ onRequestClose }: NewTransactionInterface) {
+export function useNewTransaction(onRequestClose: () => void) {
   const [title, setTitle] = useState('')
   const [value, setValue] = useState(0)
   const [category, setCategory] = useState('')
@@ -32,6 +29,8 @@ export function useNewTransaction({ onRequestClose }: NewTransactionInterface) {
     setType('deposit')
 
     onRequestClose()
+    
+    notify('Transação cadastrada!')
   }
 
   return {
